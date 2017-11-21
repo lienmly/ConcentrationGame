@@ -37,12 +37,12 @@ class Concentration {
     
     // Public API function
     func resetGame() {
-        // Turn all cards face down
         for index in cards.indices {
             cards[index].isFaceUp = false
             cards[index].isMatched = false
         }
         indexOfOneAndOnlyFaceUpCard = nil
+        cards = shuffleCards()
     }
     
     init(numberOfPairsOfCards: Int) {
@@ -50,7 +50,18 @@ class Concentration {
             let card = Card()
             cards += [card, card]
         }
+        // Shuffle the cards
+        cards = shuffleCards()
     }
     
-    // TODO: Shuffle the cards
+    private func shuffleCards() -> [Card]{
+        var shuffledCards = [Card]()
+        
+        for _ in cards.indices {
+            let randomIndex = Int(arc4random_uniform(UInt32(cards.count)))
+            shuffledCards.append(cards.remove(at: randomIndex))
+        }
+        
+        return shuffledCards
+    }
 }
