@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    var emojiChoices = ["🦇","🙀","😱","😈","🎃","👻","🍭","🍬","🍎"]
+    var emojiChoices = ["🦇","🙀","😱","😈","🎃","👻","🍭","🍬","🍎","☠️"]
     var emoji = [Int:String]()
     
     // Number of times cards are flipped
@@ -32,6 +32,12 @@ class ViewController: UIViewController {
         else {
             print("Chosen card is not in cardButtons")
         }
+    }
+    
+    @IBAction func resetGame(_ sender: UIButton) {
+        game.resetGame()
+        flipCount = 0
+        updateViewFromModel()
     }
     
     @IBOutlet weak var flipCountLabel: UILabel!

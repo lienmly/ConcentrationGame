@@ -35,6 +35,16 @@ class Concentration {
         }
     }
     
+    // Public API function
+    func resetGame() {
+        // Turn all cards face down
+        for index in cards.indices {
+            cards[index].isFaceUp = false
+            cards[index].isMatched = false
+        }
+        indexOfOneAndOnlyFaceUpCard = nil
+    }
+    
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
