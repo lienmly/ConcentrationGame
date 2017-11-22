@@ -9,9 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    var emojiChoices = ["🦇","🙀","😱","😈","🎃","👻","🍭","🍬","🍎","☠️"]
+    var emojiChoices = [String]()
     var emoji = [Int:String]()
     
     // Number of times cards are flipped
@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetGame(_ sender: UIButton) {
+        getRandomTheme()
         game.resetGame()
         flipCount = 0
         updateViewFromModel()
@@ -42,6 +43,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
+    
+    override func viewDidLoad() {
+        getRandomTheme()
+    }
     
     func updateViewFromModel() {
         for index in cardButtons.indices {
@@ -66,6 +71,12 @@ class ViewController: UIViewController {
         }
         
         return emoji[card.identifier] ?? "?"
+    }
+    
+    func getRandomTheme() {
+        let randomIndex = Int(arc4random_uniform(UInt32(game.themes.count)))
+        emojiChoices = game.themes[randomIndex]
+        emoji = [:]
     }
 }
 
