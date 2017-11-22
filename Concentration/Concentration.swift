@@ -11,6 +11,7 @@ import Foundation
 class Concentration {
     var cards = [Card]()
     var gameScore = 0
+    var flipCount = 0
     var indexOfOneAndOnlyFaceUpCard: Int?
     var seenCardIndices = [Int:Int]()
     var mainGameTheme = [String]()
@@ -23,6 +24,8 @@ class Concentration {
     
     // Public API function 
     func chooseCard(at index: Int) {
+        // Increment flip count
+        flipCount += 1
         if !cards[index].isMatched {
             // -- Mark # of times this card is seen
             if seenCardIndices[index] == nil {
@@ -76,6 +79,7 @@ class Concentration {
         indexOfOneAndOnlyFaceUpCard = nil
         cards = shuffleCards()
         gameScore = 0
+        flipCount = 0
         seenCardIndices = [:]
     }
     

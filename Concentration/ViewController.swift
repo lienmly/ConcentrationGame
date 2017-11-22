@@ -14,15 +14,7 @@ class ViewController: UIViewController {
     var emojiChoices = [String]()
     var emoji = [Int:String]()
     
-    // Number of times cards are flipped
-    var flipCount: Int = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
-    }
-    
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
         if let cardIndex = cardButtons.index(of: sender) {
             game.chooseCard(at: cardIndex)
             
@@ -37,7 +29,6 @@ class ViewController: UIViewController {
     @IBAction func resetGame(_ sender: UIButton) {
         getRandomTheme()
         game.resetGame()
-        flipCount = 0
         updateViewFromModel()
     }
     
@@ -67,6 +58,7 @@ class ViewController: UIViewController {
         // Update gameScoreLabel
         gameScoreLabel.text = "Score: \(game.gameScore)"
         // Update flipCountLabel
+        flipCountLabel.text = "Flips: \(game.flipCount)"
     }
     
     func emoji(for card: Card) -> String {
