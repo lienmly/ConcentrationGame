@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     @IBOutlet var cardButtons: [UIButton]!
     
     override func viewDidLoad() {
+        game.addTheme(with: ["💟","☮️","✝️","☪️","🕉","☸️","☸️","✡️","🔯","🕎"])
         getRandomTheme()
     }
     

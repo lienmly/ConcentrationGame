@@ -52,6 +52,11 @@ class Concentration {
         cards = shuffleCards()
     }
     
+    // Public API function
+    func addTheme(with themeArray: [String]) {
+        themes.append(themeArray)
+    }
+    
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
