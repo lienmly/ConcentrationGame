@@ -15,12 +15,15 @@ class Concentration {
     var indexOfOneAndOnlyFaceUpCard: Int?
     var seenCardIndices = [Int:Int]()
     var mainGameTheme = [String]()
-    var themes = [["🦇","🙀","😱","😈","🎃","👻","🍭","🍬","🍎","☠️"],
-                  ["🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐨","🐯"],
-                  ["⚽️","🏀","🏈","⚾️","🎾","🏐","🏉","🎱","🏓","🏸"],
-                  ["😀","😃","😎","😡","☹️","😭","😫","😰","😍","🤪"],
-                  ["🍕","🍗","🍣","🍙","🍔","🥪","🌮","🌭","🍥","🍚"],
-                  ["🇩🇿","🇻🇬","🇭🇷","🇨🇼","🇨🇬","🇦🇷","🇧🇮","🇬🇪","🇸🇬","🇻🇳"]]
+    var themes: [String:([String],[(Double, Double, Double, Double)])] = [
+        // Theme Name, Theme Content, Card Color, BG Color
+        "Haloween": (["🦇","🙀","😱","😈","🎃","👻","🍭","🍬","🍎","☠️"],[(244, 146, 66, 1),(0, 0, 0, 1)]),
+        "Animal":   (["🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐨","🐯"],[(244, 117, 236, 1),(201, 6, 201, 1)]),
+        "Sport":    (["⚽️","🏀","🏈","⚾️","🎾","🏐","🏉","🎱","🏓","🏸"],[(160, 255, 195, 1),(137, 180, 249, 1)]),
+        "EmojiFace":(["😀","😃","😎","😡","☹️","😭","😫","😰","😍","🤪"],[(252, 234, 100, 1),(244, 138, 93, 1)]),
+        "Food":     (["🍕","🍗","🍣","🍙","🍔","🥪","🌮","🌭","🍥","🍚"],[(188, 255, 251, 1),(188, 194, 255, 1)]),
+        "Flag":     (["🇩🇿","🇻🇬","🇭🇷","🇨🇼","🇨🇬","🇦🇷","🇧🇮","🇬🇪","🇸🇬","🇻🇳"],[(226, 209, 56, 1),(242, 38, 38, 1)])
+    ]
     
     // Public API function 
     func chooseCard(at index: Int) {
@@ -84,8 +87,9 @@ class Concentration {
     }
     
     // Public API function
-    func addTheme(with themeArray: [String]) {
-        themes.append(themeArray)
+    func addTheme(name themeName: String, with themeArray: [String], color themeColor: [(Double, Double, Double, Double)]) {
+        let themeContent = (themeArray, themeColor)
+        themes.updateValue(themeContent, forKey: themeName)
     }
     
     init(numberOfPairsOfCards: Int) {
