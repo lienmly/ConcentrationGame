@@ -24,6 +24,7 @@ class Concentration {
         "Food":     (["🍕","🍗","🍣","🍙","🍔","🥪","🌮","🌭","🍥","🍚"],[(188, 255, 251, 1),(188, 194, 255, 1)]),
         "Flag":     (["🇩🇿","🇻🇬","🇭🇷","🇨🇼","🇨🇬","🇦🇷","🇧🇮","🇬🇪","🇸🇬","🇻🇳"],[(226, 209, 56, 1),(242, 38, 38, 1)])
     ]
+    var firstTimePoint = Date()
     
     // Public API function 
     func chooseCard(at index: Int) {
@@ -45,6 +46,12 @@ class Concentration {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                     gameScore += 2
+                    
+                    // Initialize 2nd time point & calculate time interval
+                    let secondTimePoint = Date()
+                    let timeInterval = secondTimePoint.timeIntervalSince(firstTimePoint)
+                    let timeIntervalIndex = 100 / timeInterval
+                    gameScore += Int(timeIntervalIndex)
                 }
                 else {
                     cards[matchIndex].isMatched = false
@@ -69,6 +76,9 @@ class Concentration {
                 // -- Flip the current card up
                 cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
+                
+                // Initialize or reset 1st time point
+                firstTimePoint = Date()
             }
         }
     }

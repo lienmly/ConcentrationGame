@@ -90,7 +90,6 @@ class ViewController: UIViewController {
     }
     
     func setColorTheme() {
-        print("Setting color theme -- \(emojiChoices) -- for the game")
         view.backgroundColor = colorTheme[1]
         for button in cardButtons {
             button.backgroundColor = colorTheme[0]
@@ -98,9 +97,6 @@ class ViewController: UIViewController {
         flipCountLabel.textColor = colorTheme[0]
         gameScoreLabel.textColor = colorTheme[0]
         resetButton.backgroundColor = colorTheme[0]
-        
-        print("Background color = \(colorTheme[1])")
-        print("Card color = \(colorTheme[0])")
     }
 }
 
