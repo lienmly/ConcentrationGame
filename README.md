@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td>
-                ![alt text](http://url/GameScreenShots/animalTheme.png)
+                ![alt text](http://url/to/GameScreenShots/animalTheme.png)
             </td>
         </tr>
     </tbody>
