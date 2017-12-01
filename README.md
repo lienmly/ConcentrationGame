@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td>
-                ![Alt text](/path/to/animalTheme.png "Animal Theme")
+                <img src="https://github.com/lienmly/ConcentrationGame/blob/master/GameScreenShots/animalTheme.png" alt="Animal Theme" height="350" >
             </td>
         </tr>
     </tbody>
