@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td>
-                ![Alt text](path/to/GameScreenShots/animalTheme.png)
+                ![Alt text](/relative/path/to/GameScreenShots/animalTheme.png?raw=true "Animal Theme")
             </td>
         </tr>
     </tbody>
